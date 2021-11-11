@@ -41,6 +41,8 @@ def about():
 
 @app.route('/authentication')
 def authentication():
+    if session['fake_user']:
+        return redirect('main')
     return render_template('authentication.html', response='')
 
 @app.route('/privacypolicy')
@@ -67,14 +69,6 @@ def logout():
 @app.route('/previouspredictions')
 def previouspredictionst():
     return render_template('previouspredictions.html', response='')
-# @app.route('previouspredictions')
-# def save():
-#     if insertQuery(user_id, url,summary, result):
-#         user= session['fake_user']
-#         test= user[0]
-#         return redirect('/main')
-#     else:
-#         return render_template('authentication.html', response='Invalid Credentials')
 
 
 
@@ -121,6 +115,7 @@ def checkLogin(username, password):
     conn = mysql.connect()
     cursor = conn.cursor()
     test = cursor.execute("SELECT id FROM users WHERE username =  '" + username + "' AND password =  '" + password + "' ")
+    print(test)
     return test
 
 def getUser(username):

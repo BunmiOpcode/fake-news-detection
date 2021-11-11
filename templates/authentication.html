@@ -65,6 +65,9 @@
 <h3>Login</h3>
 <div class="authentication-form">
 <form method="POST" action="/login">
+    {% if response: %}
+        <div class="alert alert-warning">{{response}}</div>
+    {% endif %}
 <div class="form-group mb-20">
 <input type="text" name="username" class="form-control" required placeholder="Username*">
 </div>
