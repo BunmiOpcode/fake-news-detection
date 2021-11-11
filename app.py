@@ -68,7 +68,9 @@ def logout():
 
 @app.route('/previouspredictions')
 def previouspredictionst():
-    return render_template('previouspredictions.html', response='')
+    data = previouspredictions()
+    print(data)
+    return render_template('previouspredictions.html', response=data)
 
 
 
@@ -130,17 +132,16 @@ def insertPredictionQuery(user_id, url,summary, result):
     cursor = conn.cursor()
     test = cursor.execute("INSERT INTO user_predictions(user_id, url, summary, result) VALUES ( '%s', '%s', ' %s',  '%s')" % (user_id, url, summary, result))
     conn.commit()
-    if test:
-        print('djkdhdhhjdhdhdhdhdhd')
     return test
 
 def previouspredictions():
+    user_id = session['fake_user'][0]
     conn = mysql.connect()
     cursor = conn.cursor()
-    test = cursor.execute("SELECT * FROM user_predictions WHERE user_id =  '" + user_id + "' ")
-    data= test.fetchall()
-    test.close()
-    return render_template('previouspredictions', user_predictions = data)
+    cursor.execute("SELECT * FROM user_predictions")
+    data= cursor.fetchall()
+    conn.close()
+    
 
 @app.route('/register',methods=['POST'])
 def register():
