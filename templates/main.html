@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+ 
+<header class="header-page-bg overflow-hidden header-page-bg-3">
+  <div class="bottom-frame"></div>
+  <div class="header-page-bg-inner">
+  <div class="header-page-line">
+  <div class="header-page-line-item"></div>
+  <div class="header-page-line-item"></div>
+  <div class="header-page-line-item"></div>
+  <div class="header-page-line-item"></div>
+  <div class="header-page-line-item"></div>
+  <div class="header-page-line-item"></div>
+  <div class="header-page-line-item"></div>
+  <div class="header-page-line-item"></div>
+  </div>
+</header>
+
+<section><div class="col-12 col-md-6 container-fluid  justify-content-center ">
+  <div class="authentication-item">
+  <h1 style="text-align: center">Fake News Detection</h1>
+  <div class="authentication-form">
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}} " method="post">
+      <div class="form-group mb-20">
+    	<input type="text" name="news" class="form-control" required placeholder="Enter News Link*" />
+    </div>
+    <div class="authentication-account-access mb-20">
+      <div class="authentication-account-access-item">
+      <h4>Click <a href="/previouspredictions"> here</a> to View previous predictions</h4>
+      </div>
+    </div>
+        <button type="submit" class="btn main-btn full-width">Predict</button>
+        <br><br><br><br>
+        <h2 style="text-align: center">{{ prediction_text }}</h2>
+        <div style="font-size: 20px; text-align :justify">{{news}}</div>
+    </form>
+</div>
+    </div>
+    </div>
+  </section>
+
+  {% endblock %}

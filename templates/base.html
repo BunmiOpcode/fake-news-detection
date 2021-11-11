@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Cyco">
+<meta name="keywords" content="HTML,CSS,JavaScript">
+<meta name="author" content="HiBootstrap">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<title>Cyco Fake News Detection System</title>
+
+<link rel="icon" href="{{ url_for('static',filename='assets/images/favicon.png')}}" type="image/png" sizes="16x16">
+
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/bootstrap.min.css')}}" type="text/css" media="all" />
+
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/animate.min.css')}}" type="text/css" media="all" />
+
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/owl.carousel.min.css')}}" type="text/css" media="all" />
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/owl.theme.default.min.css')}}" type="text/css" media="all" />
+
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/meanmenu.min.css')}}" type="text/css" media="all" />
+
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/magnific-popup.min.css')}}" type="text/css" media="all" />
+
+<link rel='stylesheet' href="{{ url_for('static',filename='assets/css/boxicons.min.css')}}" type= "text/css" media="all" />
+
+<link rel='stylesheet' href="{{ url_for('static',filename='assets/css/flaticon.css')}}" type="text/css" media="all" />
+
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/nice-select.css')}}" type="text/css" media="all" />
+
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/style.css')}}" type="text/css" media="all" />
+
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/responsive.css')}}" type="text/css" media="all" />
+</head>
+<body>
+
+<div class="preloader bg-blue">
+<div class="preloader-wrapper">
+<div class="preloader-content">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+</div>
+
+
+<div class="fixed-top">
+    <div class="topbar">
+    <div class="topbar-inner">
+    <div class="container-fluid">
+    <div class="row justify-content-center justify-content-lg-between">
+    <div class="topbar-item topbar-left">
+    
+    </div>
+    <div class="topbar-item topbar-right">
+    <ul class="social-list social-list-gray">
+    <li>
+    <a href="https://www.facebook.com/"><i class="flaticon-facebook"></i></a>
+    </li>
+    <li>
+    <a href="https://www.twitter.com/"><i class="flaticon-twitter"></i></a>
+     </li>
+    <li>
+    <a href="https://www.youtube.com/"><i class="flaticon-youtube"></i></a>
+    </li>
+    <li>
+    <a href="https://www.instagram.com/"><i class="flaticon-instagram"></i></a>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<div class="navbar-area sticky-black">
+<div class="mobile-nav">
+<a href="index.html" class="mobile-brand">
+<img src="{{ url_for('static',filename='assets/images/logo.png')}}" alt="logo" class="logo main-brand">
+<img src="{{ url_for('static',filename='assets/images/logo-dark.png')}}" alt="logo" class="logo hover-brand">
+</a>
+<div class="navbar-option">
+<div class="navbar-option-item navbar-option-dots dropdown">
+<button type="button" id="dot" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">
+<i class="bx bx-dots-horizontal-rounded"></i>
+</button>
+<ul class="dropdown-menu navbar-dots-dropdown navbar-social" aria-labelledby="dot">
+<li class="dropdown-item">
+<div class="navbar-option-item navbar-option-search">
+<a href="#" class="search-option">
+<i class="flaticon-loupe"></i>
+</a>
+</div>
+</li>
+<li class="dropdown-item">
+    <div class="navbar-option-item">
+    <a href="#">
+    <i class="flaticon-quote-1"></i>
+    </a>
+    </div>
+    </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="main-nav">
+<div class="container-fluid">
+<nav class="navbar navbar-expand-md navbar-light">
+<a class="navbar-brand" href="index-2.html">
+<img src="{{ url_for('static',filename='assets/images/logo.png')}}" alt="logo" class="logo main-brand">
+<img src="{{ url_for('static',filename='assets/images/logo-dark.png')}}" alt="logo" class="logo hover-brand">
+</a>
+<div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+<ul class="navbar-nav mx-auto">
+<li class="nav-item">
+<a href="/" class="active">Home</a>
+</li>
+<li class="nav-item">
+<a href="/about" class="nav-link">About</a>
+</li>
+<li class="nav-item">
+<a href="#" class="nav-link dropdown-toggle">User</a>
+<ul class="dropdown-menu">
+<li class="nav-item">
+<a href="/authentication" class="nav-link">Authentication</a>
+</li>
+
+</ul>
+<li class="nav-item">
+    <a href="/authentication" class="nav-link">Predict News</a>
+    </li>
+</li>
+</ul>
+</div>
+<div class="navbar-option">
+<div class="navbar-option-item navbar-option-search">
+<a href="#" class="search-option">
+<i class="flaticon-loupe"></i>
+</a>
+</div>
+<div class="navbar-option-item">
+<a href="/logout" class="btn main-btn">Sign Out</a>
+</div>
+</div>
+</nav>
+</div>
+</div>
+</div>
+</div>
+
+{% block content %}{% endblock %}
+
+
+
+<footer>
+
+    <div class="footer-lower bg-white">
+    <div class="container">
+    <div class="footer-copyright-text footer-copyright-text-blue">
+    <p>Copyright ©2021 Cyco. Design &amp; Developed By <a href="https://hibootstrap.com/" target="_blank"><span style="color: blue;">Opcode</span></a></p>
+    </div>
+    </div>
+    </div>
+    </footer>
+    
+    
+    <div class="scroll-top" id="scrolltop">
+    <div class="scroll-top-inner">
+    Scroll Top <i class="bx bx-down-arrow-alt"></i>
+    </div>
+    </div>
+    
+    
+    
+    
+    <div class="search-overlay">
+    <div class="search-close">
+    <i class="bx bx-x"></i>
+    </div>
+    <div class="search-form-area">
+    <form>
+    <div class="form-group">
+    <input type="text" placeholder="Search..." class="form-control" autofocus="autofocus">
+    </div>
+    </form>
+    </div>
+    </div>
+    
+    
+    <script src="{{ url_for('static',filename='assets/js/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='assets/js/bootstrap.bundle.min.js')}}"></script>
+    
+    <script src="{{ url_for('static',filename='assets/js/jquery.magnific-popup.min.js')}}"></script>
+    
+    <script src="{{ url_for('static',filename='assets/js/jquery.waypoints.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='assets/js/jquery.counterup.min.js')}}"></script>
+    
+    <script src="{{ url_for('static',filename='assets/js/owl.carousel.min.js')}}"></script>
+    
+    <script src="{{ url_for('static',filename='assets/js/jquery.nice-select.min.js')}}"></script>
+    
+    <script src="{{ url_for('static',filename='assets/js/isotope.pkgd.min.js')}}"></script>
+    
+     <script src="{{ url_for('static',filename='assets/js/jquery.ajaxchimp.min.js')}}"></script>
+    
+    <script src="{{ url_for('static',filename='assets/js/form-validator.min.js')}}"></script>
+    
+    <script src="{{ url_for('static',filename='assets/js/contact-form-script.js')}}"></script>
+    
+    <script src="{{ url_for('static',filename='assets/js/jquery.meanmenu.min.js')}}"></script>
+    
+    <script src="{{ url_for('static',filename='assets/js/script.js')}}"></script>
+    </body>
+    
+    
+    </html>

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<header class="header-page-bg overflow-hidden header-page-bg-3">
+<div class="bottom-frame"></div>
+<div class="header-page-bg-inner">
+<div class="header-page-line">
+<div class="header-page-line-item"></div>
+<div class="header-page-line-item"></div>
+<div class="header-page-line-item"></div>
+<div class="header-page-line-item"></div>
+<div class="header-page-line-item"></div>
+<div class="header-page-line-item"></div>
+<div class="header-page-line-item"></div>
+<div class="header-page-line-item"></div>
+</div>
+<div class="container-fluid">
+<div class="header-content header-content-white">
+
+<h1>Authentication</h1>
+<p>Register and Login to predict News</p>
+</div>
+</div>
+</div>
+</header>
+
+
+<section class="authentication-section sec-pt-60 pb-70">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-12 col-md-6 pb-30 desk-pad-right-30">
+<div class="authentication-item">
+<h3>Register</h3>
+<div class="authentication-form">
+<form method="POST" action="/register">
+<div class="row">
+<div class="form-group mb-20">
+<input type="text" name="fullname" class="form-control" required placeholder="Fullname*">
+</div>
+</div>
+<div class="form-group mb-20">
+<input type="text" name="username" class="form-control" required placeholder="Username*">
+</div>
+<div class="form-group mb-20">
+<input type="password" name="password" class="form-control" required placeholder="Password*">
+</div>
+<p class="font-italic mb-20 form-desc">The password must be at least six characters long, contain upper and lower case letters, numbers, symbols like ! " ? $ % ^ & ).</p>
+<button class="btn main-btn full-width mb-20 ">Register Now</button>
+<div class="authentication-account-access">
+<div class="authentication-account-access-item">
+<div class="input-checkbox">
+<input type="checkbox" id="check2">
+<label for="check2">I agree to the <a href="privacy-policy.html">Privacy Policy</a> & <a href="terms-of-service.html">Terms of Service</a></label>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div class="col-12 col-md-6 pb-30 desk-pad-left-30">
+<div class="authentication-item">
+<h3>Login</h3>
+<div class="authentication-form">
+<form method="POST" action="/login">
+<div class="form-group mb-20">
+<input type="text" name="username" class="form-control" required placeholder="Username*">
+</div>
+<div class="form-group mb-20">
+<input type="password" name="password" class="form-control" required placeholder="Password*">
+</div>
+<div class="authentication-account-access mb-20">
+<div class="authentication-account-access-item">
+<div class="input-checkbox">
+<input type="checkbox" id="check1">
+<label for="check1">Remember Me!</label>
+</div>
+</div>
+ </div>
+<button class="btn main-btn full-width">Log In</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+{% endblock %}

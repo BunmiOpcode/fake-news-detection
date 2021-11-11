@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="header-page-bg overflow-hidden header-page-bg-3">
+    <div class="bottom-frame"></div>
+    <div class="header-page-bg-inner">
+    <div class="header-page-line">
+    <div class="header-page-line-item"></div>
+    <div class="header-page-line-item"></div>
+    <div class="header-page-line-item"></div>
+    <div class="header-page-line-item"></div>
+    <div class="header-page-line-item"></div>
+    <div class="header-page-line-item"></div>
+    <div class="header-page-line-item"></div>
+    <div class="header-page-line-item"></div>
+    </div>
+    
+</header>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Url</th>
+        <th scope="col">Summary</th>
+        <th scope="col">Result</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in user_predictions %}
+      <tr>
+        <th scope="row">{{row.0}}</th>
+        <td>{{row.1}}</td>
+        <td>{{row.2}}</td>
+        <td>{{row.3}}</td>
+        <td>{{row.4}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
