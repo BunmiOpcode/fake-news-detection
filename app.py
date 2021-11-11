@@ -12,6 +12,7 @@ import nltk
 #from nltk.tokenize import word_tokenize, sent_tokenize
 # nltk.download('punkt')
 import flask
+import html
 import os
 import newspaper
 from newspaper import Article
@@ -96,15 +97,10 @@ def predict():
 
         result = format(pred[0])
         user_id = session['fake_user'][0]
-        summary= news
-        escaped_string = re.escape(summary)
-        #summary = news.replace("<",'')
-        #summary = news.replace(">",'')
-        #summary = news.replace(";",'')
-        #imdb_data['summary']= imdb_data['summary'].apply(remove_stopwords)
-        #stop= set (stopwords.word('english'))
+        summary = html.unescape(news)
+        summary = summary.replace("'","")
         insertPredictionQuery(user_id, url,summary, result)
-        return render_template('previouspredictions.html', news=news, prediction_text='The news is "{}"'.format(pred[0]))
+        return render_template('main.html', news=news, prediction_text='The news is "{}"'.format(pred[0]))
 
 @app.route('/login',methods=['POST'])
 def login():
@@ -137,13 +133,16 @@ def getUser(username):
 def insertPredictionQuery(user_id, url,summary, result):
     conn = mysql.connect()
     cursor = conn.cursor()
-    test = cursor.execute("INSERT INTO user_predictions (user_id, url, summary, result) VALUES ('%s', '%s', '%s', '%s')" % (user_id, url, summary, result))
+    test = cursor.execute("INSERT INTO user_predictions(user_id, url, summary, result) VALUES ( '%s', '%s', ' %s',  '%s')" % (user_id, url, summary, result))
+    conn.commit()
+    if test:
+        print('djkdhdhhjdhdhdhdhdhd')
     return test
 
 def previouspredictions():
     conn = mysql.connect()
     cursor = conn.cursor()
-    test = cursor.execute("SELECT id,url, summary, result, created_at FROM user_predictions WHERE user_id =  '" + user_id + "' ")
+    test = cursor.execute("SELECT * FROM user_predictions WHERE user_id =  '" + user_id + "' ")
     data= test.fetchall()
     test.close()
     return render_template('previouspredictions', user_predictions = data)
@@ -166,17 +165,6 @@ def insertQuery(fullname, username, password):
     test = cursor.execute("INSERT INTO users (fullname, username, password) VALUES ( '%s', ' %s',  '%s')" % (fullname, username, password))
     if test:
         return test
-#def remove_stopwords(text, is_lower_case= False):
-    #tokens= tokenizer.tokenize(text)
-    #tokens= [token.strip() for token in tokens]
-    #if is_lower_case:
-        #filtered_tokens[for token in tokens if token not in stopword_list]
-    #else:
-    #    #filtered_tokens[for token in tokens if token.lower() not in stopword_list]
-    #filtered_text= ''.join(filtered_tokens)
-    #return filtered_text
-
-#def remove_special_character():
 
 
 
