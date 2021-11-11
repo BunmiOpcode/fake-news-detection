@@ -126,7 +126,11 @@
 <a href="#" class="nav-link dropdown-toggle">User</a>
 <ul class="dropdown-menu">
 <li class="nav-item">
-<a href="/authentication" class="nav-link">Authentication</a>
+    {% if session['fake_user']: %}
+        <a href="/previouspredictions" class="nav-link">Previous Predictions</a>
+    {% else: %}
+        <a href="/authentication" class="nav-link">Authentication</a>
+    {% endif %}
 </li>
 
 </ul>
@@ -143,7 +147,11 @@
 </a>
 </div>
 <div class="navbar-option-item">
-<a href="/logout" class="btn main-btn">Sign Out</a>
+    {% if session['fake_user']: %}
+        <a href="/logout" class="btn main-btn">Sign Out</a>
+    {% else: %}
+        <a href="/authentication" class="btn main-btn">Sign In</a>
+    {% endif %}
 </div>
 </div>
 </nav>

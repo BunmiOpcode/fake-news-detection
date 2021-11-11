@@ -41,7 +41,7 @@ def about():
 
 @app.route('/authentication')
 def authentication():
-    if session['fake_user']:
+    if 'fake_user' in session :
         return redirect('main')
     return render_template('authentication.html', response='')
 
@@ -63,7 +63,8 @@ def prepredict():
 
 @app.route('/logout')
 def logout():
-    session.pop ('user', None)
+    if 'fake_user' in session:
+        session.pop('fake_user')
     return redirect('/')
 
 @app.route('/previouspredictions')
