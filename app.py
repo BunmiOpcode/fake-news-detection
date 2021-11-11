@@ -163,6 +163,7 @@ def insertQuery(fullname, username, password):
     conn = mysql.connect()
     cursor = conn.cursor()
     test = cursor.execute("INSERT INTO users (fullname, username, password) VALUES ( '%s', ' %s',  '%s')" % (fullname, username, password))
+    conn.commit()
     if test:
         return test
 
