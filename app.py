@@ -57,6 +57,10 @@ def termsofservice():
 def main():
     return render_template('main.html', response='')
 
+@app.route('/prepredict')
+def prepredict():
+    return render_template('prepredict', response='')
+
 @app.route('/logout')
 def logout():
     if 'fake_user' in session:
@@ -149,7 +153,7 @@ def register():
     username = request.form['username']
     password = request.form['password']
     if insertQuery(fullname, username, password):
-        return render_template('authentication.html', response='Registration successful')
+        return render_template('prepredict.html', response='Registration successful')
     else:
         return render_template('authentication.html', response='Invalid Credentials')
 
