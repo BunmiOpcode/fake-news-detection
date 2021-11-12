@@ -57,10 +57,6 @@ def termsofservice():
 def main():
     return render_template('main.html', response='')
 
-@app.route('/prepredict')
-def prepredict():
-    return render_template('prepredict.html', response='')
-
 @app.route('/logout')
 def logout():
     if 'fake_user' in session:
@@ -101,11 +97,11 @@ def predict():
 
 @app.route('/login',methods=['POST'])
 def login():
-    if not request.form['username'] or not request.form['password']:
+    if not request.form['login-username'] or not request.form['login-password']:
         return render_template('authentication.html', response='Username and Password required')
 
-    username = request.form['username']
-    password = request.form['password']
+    username = request.form['login-username']
+    password = request.form['login-password']
 
     if checkLogin(username, password):
         session['fake_user'] = getUser(username)
@@ -117,8 +113,7 @@ def login():
 def checkLogin(username, password):
     conn = mysql.connect()
     cursor = conn.cursor()
-    test = cursor.execute("SELECT id FROM users WHERE username =  '" + username + "' AND password =  '" + password + "' ")
-    print(test)
+    test = cursor.execute("SELECT id FROM users WHERE username =  '%s' AND password='%s' " % (username,password))
     return test
 
 def getUser(username):
@@ -161,7 +156,7 @@ def register():
 def insertQuery(fullname, username, password):
     conn = mysql.connect()
     cursor = conn.cursor()
-    test = cursor.execute("INSERT INTO users (fullname, username, password) VALUES ( '%s', ' %s',  '%s')" % (fullname, username, password))
+    test = cursor.execute("INSERT INTO users (fullname, username, password) VALUES ( '%s', '%s',  '%s')" % (fullname, username, password))
     conn.commit()
     if test:
         return test
