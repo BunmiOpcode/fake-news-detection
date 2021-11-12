@@ -111,7 +111,7 @@ def login():
         session['fake_user'] = getUser(username)
         return redirect('/main')
     else:
-        return render_template('authentication.html', response='Invalid Credentials')
+        return render_template('authentication.html', responce='Invalid Credentials')
 
 
 def checkLogin(username, password):
@@ -144,7 +144,7 @@ def previouspredictions():
     conn.close()
     
 
-@app.route('/register',methods=['POST'])
+@app.route('/register', methods=['POST'])
 def register():
     if not request.form['username'] or not request.form['password'] or not request.form['fullname']:
         return render_template('index.html', response='Username and Password required')
@@ -152,8 +152,10 @@ def register():
     fullname = request.form['fullname']
     username = request.form['username']
     password = request.form['password']
-    insertQuery(fullname, username, password)
-    return redirect('/prepredict')
+    if insertQuery(fullname, username, password):
+        return render_template('authentication.html', response='Registration successful')
+    else:
+        return render_template('authentication.html', response='Invalid Credentials')
 
 
 def insertQuery(fullname, username, password):
@@ -163,8 +165,6 @@ def insertQuery(fullname, username, password):
     conn.commit()
     if test:
         return test
-
-
 
 if __name__=="__main__":
     port=int(os.environ.get('PORT',5000))

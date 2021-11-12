@@ -35,10 +35,11 @@
 <h3>Register</h3>
 <div class="authentication-form">
 <form method="POST" action="/register">
-<div class="row">
+    {% if response: %}
+    <div class="alert alert-warning">{{response}}</div>
+    {% endif %}
 <div class="form-group mb-20">
 <input type="text" name="fullname" class="form-control" required placeholder="Fullname*">
-</div>
 </div>
 <div class="form-group mb-20">
 <input type="text" name="username" class="form-control" required placeholder="Username*">
@@ -65,8 +66,8 @@
 <h3>Login</h3>
 <div class="authentication-form">
 <form method="POST" action="/login">
-    {% if response: %}
-        <div class="alert alert-warning">{{response}}</div>
+    {% if responce: %}
+        <div class="alert alert-warning">{{responce}}</div>
     {% endif %}
 <div class="form-group mb-20">
 <input type="text" name="username" class="form-control" required placeholder="Username*">
