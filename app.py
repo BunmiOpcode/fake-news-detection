@@ -153,6 +153,7 @@ def register():
     username = request.form['username']
     password = request.form['password']
     if insertQuery(fullname, username, password):
+        session['fake_user'] = getUser(username)
         return render_template('prepredict.html', response='Registration successful')
     else:
         return render_template('authentication.html', response='Invalid Credentials')
